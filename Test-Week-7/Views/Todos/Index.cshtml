@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TodoModel>
+
+<h1>Todo List</h1>
+
+<p>
+    <a href="@Url.Action("Create")">Create New Todo</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Todo</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Todo</td>
+                <td>@todo.Completed</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = todo.Id })">Details</a> |
+                    <a href="@Url.Action("Edit", new { id = todo.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = todo.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
